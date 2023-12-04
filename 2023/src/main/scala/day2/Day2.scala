@@ -41,14 +41,20 @@ def isGamePossible(gameResults: Map[String, Int], actualCubes: Map[String, Int])
     testResult
 }
 
+def cubePower(maxCubesFromGame: Map[String,Int]): Int = {
+    maxCubesFromGame.filter(_._1 != "Game").map(_._2).reduce(_ * _)
+}
+
 def solve : Unit = {
 
     val filename = "data/day2-input"
+    val lines = Source.fromFile(filename).getLines().toList
     val actualCubes = Map[String, Int](
         ("red", 12),
         ("green", 13),
         ("blue", 14)
     )
     println("__Day 2__")
-    println("Part 1: " +Source.fromFile(filename).getLines().toList.map(maxCubesFromGame(_)).filter(isGamePossible(_, actualCubes)).map(_.getOrElse("Game", 0)).reduce(_+_))
+    println("Part 1: " + lines.map(maxCubesFromGame(_)).filter(isGamePossible(_, actualCubes)).map(_.getOrElse("Game", 0)).reduce(_+_))
+    println("Part 2: " + lines.map(maxCubesFromGame(_)).map(cubePower(_)).reduce(_+_))
 }
