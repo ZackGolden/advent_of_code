@@ -1,11 +1,7 @@
 import main.scala.day3._
 
 class Day3_Tests extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
+
 
   test("Test Find Symbols") {
     val schematic = List(
