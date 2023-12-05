@@ -1,10 +1,7 @@
 import main.scala.day2._
+
 class Day2_Tests extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
+
   test("Test max Cubes from Row") {
     val game1Result = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
     val expected = Map[String, Int](("Game", 1), ("blue", 6), ("red", 4), ("green", 2))
