@@ -67,4 +67,43 @@ class Day3_Tests extends munit.FunSuite {
     assertEquals(obtained, expected)
   }
   
+  test("Test Find Gears") {
+    val schematic = List(
+      "467..114..",
+      "...*......",
+      "..35..633.",
+      "......#...",
+      "617*......",
+      ".....+.58.",
+      "..592.....",
+      "......755.",
+      "...$.*....",
+      ".664.598..",
+    )
+    val expected = List(
+      "3,1",
+      "3,4",
+      "5,8"
+    ).sorted
+    val obtained = findGears(schematic).sorted
+    assertEquals(obtained, expected)
+  }
+
+  test("Test Part 2 Full Run") {
+    val schematic = List(
+      "467..114..",
+      "...*......",
+      "..35..633.",
+      "......#...",
+      "617*......",
+      ".....+.58.",
+      "..592.....",
+      "......755.",
+      "...$.*....",
+      ".664.598..",
+    )
+    val expected = 467835
+    val obtained = createListOfAdjacentComponents(schematic).filter(_._2.size==2).map(_._2.reduce(_*_)).reduce(_+_)
+    assertEquals(obtained, expected)
+  }
 }
