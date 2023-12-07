@@ -1,12 +1,6 @@
 import main.scala.day4._
 
 class Day4_Tests extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
-
   test("Test Full Part1") {
     val scratchCards = List(
         "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
