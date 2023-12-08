@@ -29,7 +29,7 @@ class Day7_Tests extends munit.FunSuite {
     assertEquals(obtained, handTypes.threeOfaKind)
   }
 
-  test("Ordering test") {
+  test("Part 1 Ordering test") {
     val hands = List(
         ("32T3K", 765),
         ("T55J5", 684),
@@ -60,6 +60,49 @@ class Day7_Tests extends munit.FunSuite {
             case Some(value) => (value.group("cards"), value.group("bid").toInt)
         })
         .sortWith(lt=(A,B) => compareHands(A._1, B._1))
+        .zipWithIndex
+        .map(a => (a._2+1)*a._1._2)
+        .reduce(_ + _)
+
+    assertEquals(obtained, expected)
+
+  }
+
+  test("Part 2 Ordering test") {
+    val hands = List(
+        ("32T3K", 765),
+        ("T55J5", 684),
+        ("KK677", 28),
+        ("KTJJT", 220),
+        ("QQQJA", 483)
+    )
+    val obtained = hands.sortWith(lt=(A,B) => compareHandsWithJoker(A._1, B._1))
+    val expected = List(("32T3K",765), ("KK677",28), ("T55J5",684), ("QQQJA",483), ("KTJJT",220))
+    assertEquals(obtained, expected)
+  }
+
+  test("Rank with Jokers 1") {
+
+  }
+
+    test("Full Part 2 Test") {
+    val hands = List(
+        "32T3K 765",
+        "T55J5 684",
+        "KK677 28",
+        "KTJJT 220",
+        "QQQJA 483"
+    )
+    val expected = 5905
+
+
+    val handRegex = """(?<cards>\w+) (?<bid>\d+)""".r
+    val obtained = hands.map(handRegex.findFirstMatchIn(_))
+        .map(_ match {
+            case None => ("", 0)
+            case Some(value) => (value.group("cards"), value.group("bid").toInt)
+        })
+        .sortWith(lt=(A,B) => compareHandsWithJoker(A._1, B._1))
         .zipWithIndex
         .map(a => (a._2+1)*a._1._2)
         .reduce(_ + _)
