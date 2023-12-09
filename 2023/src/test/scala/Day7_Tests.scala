@@ -3,12 +3,6 @@ import scala.util.matching.Regex.Match
 import munit.Clue.generate
 
 class Day7_Tests extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
-
   test("Compare 1") {
     val obtained = compareHands("32T3K", "KTJJT")
     assertEquals(obtained, true)
