@@ -1,12 +1,6 @@
 import main.scala.day8._
 
 class Day8_Tests extends munit.FunSuite {
-  test("example test that succeeds") {
-    val obtained = 42
-    val expected = 42
-    assertEquals(obtained, expected)
-  }
-
   test("First Full Part 1 solution") {
     val mapText = List(
       "RL",

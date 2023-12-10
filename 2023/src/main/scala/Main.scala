@@ -8,3 +8,5 @@ import main.scala._
   day6.solve
   day7.solve
   day8.solve
+  day9.solve
+  day10.solve

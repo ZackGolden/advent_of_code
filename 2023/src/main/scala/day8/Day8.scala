@@ -67,6 +67,5 @@ def solve: Unit = {
     val startRegex = """\w\wA""".r
     val startingPoints = map.toList.map(_._1).filter(startRegex.matches(_))
     val endLocations = startingPoints.map(navigateGhosts(map, directions, _, 0).toLong)
-    println(endLocations)
     println(s"Part 2: ${endLocations.reduce(lcm(_,_))}")
 }
