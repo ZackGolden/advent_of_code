@@ -15,20 +15,42 @@ def mapToMap(paths: List[String]): Map[String, (String, String)] = {
 
 @tailrec
 def navigate(map: Map[String, (String, String)], directions: String, location: String, distance: Int): Int = {
-    println(s"Location: ${location}")
     if(location == "ZZZ") {
         distance
-    } else if(location == "") {
-        println("It Broke")
-        0
     } else {
-        println(directions.charAt(distance%(directions.length())))
         navigate(map, directions, if(directions.charAt(distance%directions.length())=='L') {
             map.getOrElse(location, ("",""))._1
         } else {
             map.getOrElse(location, ("",""))._2
         }, distance+1)
     }
+}
+
+@tailrec
+def navigateGhosts(map: Map[String, (String,String)], directions: String, location: String, distance: Int): Int = {
+    val endRegex = """\w\wZ""".r
+    if(endRegex.matches(location)) {
+        distance
+    } else {
+        navigateGhosts(map, directions, if(directions.charAt(distance%directions.length())=='L') {
+            map.getOrElse(location, ("",""))._1
+        } else {
+            map.getOrElse(location, ("",""))._2
+        }, distance+1)
+    }
+}
+
+@tailrec
+def gcd(a: Long, b: Long) : Long ={
+    if(b==0) {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
+
+def lcm(a: Long, b: Long) : Long = {
+    scala.math.abs(a*b)/gcd(a,b)
 }
 
 def solve: Unit = {
@@ -41,4 +63,10 @@ def solve: Unit = {
     val map = mapToMap(paths)
     println(s"Part 1: ${navigate(map, directions, "AAA", 0)}")
 
+
+    val startRegex = """\w\wA""".r
+    val startingPoints = map.toList.map(_._1).filter(startRegex.matches(_))
+    val endLocations = startingPoints.map(navigateGhosts(map, directions, _, 0).toLong)
+    println(endLocations)
+    println(s"Part 2: ${endLocations.reduce(lcm(_,_))}")
 }
