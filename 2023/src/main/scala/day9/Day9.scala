@@ -18,11 +18,11 @@ def nextRow(row: List[Long]): List[Long] = {
 
 def nextValue(row: List[Long]): Long = {
     @tailrec
-    def foo(row: List[Long], upperLast: Long): Long = {
+    def foo(row: List[Long], accumulator: Long): Long = {
         if(row.filter(_!=0).toList.length==0){
-            upperLast
+            accumulator
         } else {
-            foo(nextRow(row), row.last+upperLast)
+            foo(nextRow(row), row.last+accumulator)
         }
     }
     foo(row, 0)
@@ -30,16 +30,19 @@ def nextValue(row: List[Long]): Long = {
 
 def previousValue(row: List[Long]): Long = {
     @tailrec
-    def foo(row: List[Long], upperFirst: Long): Long = {
+    def foo(row: List[Long], accumulator: Long, iteration: Long): Long = {
         if(row.filter(_!=0).toList.length==0) {
-            -upperFirst
+            accumulator
         } else {
-            foo(nextRow(row), row.head-upperFirst)
+            if(iteration%2==0) {
+                foo(nextRow(row), accumulator+row.head, iteration+1)
+            } else {
+                foo(nextRow(row), accumulator-row.head, iteration+1)
+            }
         }
     }
-    foo(row,0)
+    foo(row,0,0)
 }
-
 
 def solve: Unit = {
     val filename = "data/day9-input"

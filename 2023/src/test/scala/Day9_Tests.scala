@@ -1,5 +1,7 @@
 import main.scala.day9._
 import scala.compiletime.ops.int
+import scala.io.Source
+
 
 class Day9_Tests extends munit.FunSuite {
     test("Calculate Next Row 1"){
@@ -99,6 +101,17 @@ class Day9_Tests extends munit.FunSuite {
         val intRegex = """-?\d+""".r
         val row = "-2 -7 -12 -17 -22 -27 -32 -37 -42 -47 -52 -57 -62 -67 -72 -77 -82 -87 -92 -97"
         val expected = 3l
+
+        val ints = intRegex.findAllMatchIn(row).map(_.group(0).toLong).toList
+        val obtained = previousValue(ints)
+        assertEquals(obtained, expected)
+    }
+
+    
+    test("Previous Value Test 5") {
+        val intRegex = """-?\d+""".r
+        val row = "15 32 57 98 176 332 653 1352 2972 6842 16010 37046 83402 181521 381725 777249 1536841 2959392 5563435 10230470"
+        val expected = 7l
 
         val ints = intRegex.findAllMatchIn(row).map(_.group(0).toLong).toList
         val obtained = previousValue(ints)
