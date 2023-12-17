@@ -67,4 +67,53 @@ class Day9_Tests extends munit.FunSuite {
         val obtained = lines.map(intRegex.findAllMatchIn(_).map(_.group(0).toLong).toList).map(nextValue(_)).reduce(_+_)
         assertEquals(obtained, expected)
     }
+
+    test("Previous Value Test 1") {
+        val intRegex = """\d+""".r
+        val row = "0 3 6 9 12 15"
+        val ints = intRegex.findAllMatchIn(row).map(_.group(0).toLong).toList
+        val obtained = previousValue(ints)
+        val expected = -3l
+        assertEquals(obtained, expected)
+    }
+
+    test("Previous Value Test 2") {
+        val intRegex = """\d+""".r
+        val row = "1 3 6 10 15 21"
+        val ints = intRegex.findAllMatchIn(row).map(_.group(0).toLong).toList
+        val obtained = previousValue(ints)
+        val expected = 0l
+        assertEquals(obtained, expected)
+    }
+
+    test("Previous Value Test 3") {
+        val intRegex = """\d+""".r
+        val row = "10 13 16 21 30 45"
+        val ints = intRegex.findAllMatchIn(row).map(_.group(0).toLong).toList
+        val obtained = previousValue(ints)
+        val expected = 5l
+        assertEquals(obtained, expected)
+    }
+
+    test("Previous Value Test 4") {
+        val intRegex = """-?\d+""".r
+        val row = "-2 -7 -12 -17 -22 -27 -32 -37 -42 -47 -52 -57 -62 -67 -72 -77 -82 -87 -92 -97"
+        val expected = 3l
+
+        val ints = intRegex.findAllMatchIn(row).map(_.group(0).toLong).toList
+        val obtained = previousValue(ints)
+        assertEquals(obtained, expected)
+    }
+
+    test("Full Part 2 Test") {
+        val intRegex = """-?\d+""".r
+        val lines = List(
+            "0 3 6 9 12 15",
+            "1 3 6 10 15 21",
+            "10 13 16 21 30 45"
+        )
+        val expected = 2l
+        val obtained = lines.map(intRegex.findAllMatchIn(_).map(_.group(0).toLong).toList).map(previousValue(_)).reduce(_+_)
+        assertEquals(obtained, expected)
+    }
 }

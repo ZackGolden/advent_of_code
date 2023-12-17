@@ -28,6 +28,18 @@ def nextValue(row: List[Long]): Long = {
     foo(row, 0)
 }
 
+def previousValue(row: List[Long]): Long = {
+    @tailrec
+    def foo(row: List[Long], upperFirst: Long): Long = {
+        if(row.filter(_!=0).toList.length==0) {
+            -upperFirst
+        } else {
+            foo(nextRow(row), row.head-upperFirst)
+        }
+    }
+    foo(row,0)
+}
+
 
 def solve: Unit = {
     val filename = "data/day9-input"
@@ -38,4 +50,6 @@ def solve: Unit = {
     val intRegex = """-?\d+""".r
     val part1Results = lines.map(intRegex.findAllMatchIn(_).map(_.group(0).toLong).toList).map(nextValue(_)).reduce(_+_)
     println(s"Part 1: ${part1Results}")
+    val part2Results = lines.map(intRegex.findAllMatchIn(_).map(_.group(0).toLong).toList).map(previousValue(_)).reduce(_+_)
+    println(s"Part 2: $part2Results")
 }
