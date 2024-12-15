@@ -1,3 +1,4 @@
+from math import ceil, floor
 def find_antennas(lines):
   antennas = {}
   for y,line in enumerate(lines):
@@ -16,7 +17,6 @@ def find_antinodes(antennas):
     for i,antenna in enumerate(antennas[freq]):
       for other in antennas[freq][i+1:]:
         x_dif, y_dif = antenna[0]-other[0], antenna[1]-other[1]
-        print("x_dif:",x_dif,"y_dif",y_dif)
         antinode_1 = (antenna[0]+x_dif, antenna[1]+y_dif)
         antinode_2 = (other[0]-x_dif, other[1]-y_dif)
         if antinode_1 not in {antenna, other}:
@@ -40,16 +40,40 @@ def part_1(lines):
 
   return sum
 
+def find_resonate_antinodes(antennas, x_max, y_max):
+  antinodes = set()
+  for freq in antennas:
+    for i,antenna in enumerate(antennas[freq]):
+      for other in antennas[freq][i+1:]:
+        x_dif, y_dif = antenna[0]-other[0], antenna[1]-other[1]
+        # one way
+        x_cur, y_cur = antenna[0],antenna[1]
+        while x_cur >= 0 and x_cur < x_max and y_cur >= 0 and y_cur <= y_max:
+          antinodes.add((x_cur,y_cur))
+          x_cur += x_dif
+          y_cur += y_dif
+        # The Other Way
+        x_cur, y_cur = other[0],other[1]
+        while x_cur >= 0 and x_cur < x_max and y_cur >= 0 and y_cur <= y_max:
+          antinodes.add((x_cur,y_cur))
+          x_cur -= x_dif
+          y_cur -= y_dif
+
+  return antinodes
+
 def part_2(lines):
-  sum = 0
-  return sum
+  antennas = find_antennas(lines)
+  x_max, y_max = len(lines[0])-1, len(lines)-1
+  antinodes = find_resonate_antinodes(antennas, x_max, y_max)
+
+  return len(antinodes)
 
 def main():
   f = open("./day8/input", "r")
   lines = f.readlines()
   print("Day 8")
   print("Part 1:", part_1(lines))
-  print("Part 2:", part_2(lines))
+  print("Part 2:", part_2(lines)) # 1535 is too high so is 1504. 1255 is incorrect
   
 if __name__ == "__main__":
   main()

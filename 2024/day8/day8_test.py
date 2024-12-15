@@ -1,4 +1,4 @@
-from day8 import part_1, part_2, find_antennas, find_antinodes
+from day8 import part_1, part_2, find_antennas, find_antinodes, find_resonate_antinodes
 
 def test_find_antennas():
     lines = [
@@ -47,3 +47,27 @@ def test_part1():
     ]
   result = part_1(lines)
   assert 14 == result
+
+def test_find_resonate_antinodes():
+   antennas = {'T': [(0, 0), (3, 1), (1, 2)]}
+   results = find_resonate_antinodes(antennas, 10, 9) 
+   expected = {(0, 0), (3, 1), (1, 2), (5, 0), (6, 2), (9, 3), (2, 4), (3, 6), (4, 8)}
+   assert results == expected
+
+def test_part2():
+  lines = [
+    "............\n",
+    "........0...\n",
+    ".....0......\n",
+    ".......0....\n",
+    "....0.......\n",
+    "......A.....\n",
+    "............\n",
+    "............\n",
+    "........A...\n",
+    ".........A..\n",
+    "............\n",
+    "............\n",
+    ]
+  result = part_2(lines)
+  assert 34 == result
