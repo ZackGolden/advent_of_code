@@ -1,4 +1,3 @@
-from math import ceil, floor
 def find_antennas(lines):
   antennas = {}
   for y,line in enumerate(lines):
@@ -73,7 +72,7 @@ def main():
   lines = f.readlines()
   print("Day 8")
   print("Part 1:", part_1(lines))
-  print("Part 2:", part_2(lines)) # 1535 is too high so is 1504. 1255 is incorrect
+  print("Part 2:", part_2(lines))
   
 if __name__ == "__main__":
   main()
