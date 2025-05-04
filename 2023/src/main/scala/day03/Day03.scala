@@ -1,4 +1,4 @@
-package main.scala.day3
+package main.scala.day03
 
 import scala.io.Source
 import scala.util.matching.Regex.Match
@@ -109,7 +109,7 @@ def createListOfAdjacentComponents(schematics: List[String]) : Map[String, List[
 
 def solve : Unit = {
 
-    val filename = "data/day3-input"
+    val filename = "data/day03-input"
     val lines = Source.fromFile(filename).getLines().toList
     println("__Day 3__")
     println("Part 1: " + findAdjacentComponents(lines))

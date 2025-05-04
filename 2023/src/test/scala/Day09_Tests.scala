@@ -1,4 +1,4 @@
-import main.scala.day9._
+import main.scala.day09._
 import scala.compiletime.ops.int
 import scala.io.Source
 

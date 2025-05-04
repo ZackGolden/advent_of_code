@@ -1,4 +1,4 @@
-import main.scala.day7._
+import main.scala.day07._
 import scala.util.matching.Regex.Match
 import munit.Clue.generate
 

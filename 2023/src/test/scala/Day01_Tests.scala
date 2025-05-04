@@ -1,4 +1,4 @@
-import main.scala.day1._
+import main.scala.day01._
 // For more information on writing tests, see
 // https://scalameta.org/munit/docs/getting-started.html
 class Day1_Tests extends munit.FunSuite {

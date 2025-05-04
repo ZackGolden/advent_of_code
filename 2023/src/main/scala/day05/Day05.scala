@@ -1,4 +1,4 @@
-package main.scala.day5
+package main.scala.day05
 
 import scala.io.Source
 
@@ -84,7 +84,7 @@ def part1(almanac: Almanac): Long = {
 }
 
 def solve : Unit = {
-  val filename = "data/day5-input"
+  val filename = "data/day05-input"
   val lines = Source.fromFile(filename).getLines().toList
   val almanac = parseAlmanac(lines)
   println("__Day 5__")

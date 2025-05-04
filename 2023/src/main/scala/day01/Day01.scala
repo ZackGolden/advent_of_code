@@ -1,4 +1,4 @@
-package main.scala.day1
+package main.scala.day01
 
 import scala.io.Source
 
@@ -27,7 +27,7 @@ def wordToNumber(s: String) : String = {
 }
 
 def solve: Unit =
-  val filename = "data/day1-input"
+  val filename = "data/day01-input"
   println("__Day 1__")
   println("Part 1: " + generateCalibrationValue(Source.fromFile(filename).getLines.toList))
   println("Part 2: " + generateCalibrationValue(Source.fromFile(filename).getLines.toList.map(wordToNumber(_))))

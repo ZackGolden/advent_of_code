@@ -1,4 +1,4 @@
-import main.scala.day4._
+import main.scala.day04._
 
 class Day4_Tests extends munit.FunSuite {
   test("Test Full Part1") {

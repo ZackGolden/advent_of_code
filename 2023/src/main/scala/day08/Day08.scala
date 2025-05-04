@@ -1,4 +1,4 @@
-package main.scala.day8
+package main.scala.day08
 
 import scala.annotation.tailrec
 import scala.io.Source
@@ -54,7 +54,7 @@ def lcm(a: Long, b: Long) : Long = {
 }
 
 def solve: Unit = {
-    val filename = "data/day8-input"
+    val filename = "data/day08-input"
     val lines = Source.fromFile(filename).getLines().toList
 
     println("__Day 8__")

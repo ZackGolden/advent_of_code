@@ -1,4 +1,4 @@
-package main.scala.day7
+package main.scala.day07
 
 import scala.annotation.tailrec
 import scala.io.Source
@@ -160,7 +160,7 @@ def compareHandsWithJoker(first: String, second: String): Boolean = {
 }
 
 def solve: Unit = {
-    val filename = "data/day7-input"
+    val filename = "data/day07-input"
     val lines = Source.fromFile(filename).getLines().toList
     println("__Day 7__")
     val handRegex = """(?<cards>\w+) (?<bid>\d+)""".r

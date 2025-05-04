@@ -1,4 +1,4 @@
-package main.scala.day2
+package main.scala.day02
 
 import scala.util.matching.Regex.Match
 import scala.io.Source
@@ -47,7 +47,7 @@ def cubePower(maxCubesFromGame: Map[String,Int]): Int = {
 
 def solve : Unit = {
 
-    val filename = "data/day2-input"
+    val filename = "data/day02-input"
     val lines = Source.fromFile(filename).getLines().toList
     val actualCubes = Map[String, Int](
         ("red", 12),

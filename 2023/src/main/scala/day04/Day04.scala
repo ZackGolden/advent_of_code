@@ -1,4 +1,4 @@
-package main.scala.day4
+package main.scala.day04
 
 import scala.io.Source
 import scala.collection.mutable
@@ -55,7 +55,7 @@ def cardTotal(cardList: List[Int]): Int = {
 }
 
 def solve : Unit = {
-    val filename = "data/day4-input"
+    val filename = "data/day04-input"
     val scratchCards = Source.fromFile(filename).getLines().toList
     println("__Day 4__")
     println(s"Part 1: " + scratchCards.map(score(_)).reduce(_+_))

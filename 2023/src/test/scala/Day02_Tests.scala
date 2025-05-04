@@ -1,4 +1,4 @@
-import main.scala.day2._
+import main.scala.day02._
 
 class Day2_Tests extends munit.FunSuite {
 

@@ -38,6 +38,7 @@ def find_perimeter(region):
         perimeter -= 1
   return perimeter
 
+
 def part_1(lines):
   map = parse_it(lines)
   
@@ -55,6 +56,11 @@ def part_1(lines):
     sum += len(region[1])*find_perimeter(region)
 
   return sum
+
+def find_sides(map):
+  sides = 0
+  for y in row
+  return 0
 
 def part_2(lines):
   sum = 0

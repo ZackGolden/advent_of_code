@@ -1,4 +1,4 @@
-import main.scala.day5._
+import main.scala.day05._
 import main.scala.day13.parseFile
 
 class Day5_Tests extends munit.FunSuite {

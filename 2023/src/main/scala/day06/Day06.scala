@@ -1,4 +1,4 @@
-package main.scala.day6
+package main.scala.day06
 
 import scala.io.Source
 import scala.math._
@@ -11,7 +11,7 @@ def findRange(time: Long, distance: Long): (Long, Long) = {
 }
 
 def solve : Unit = {
-  val filename = "data/day6-input"
+  val filename = "data/day06-input"
   val race1Info = Source.fromFile(filename).getLines()
   val intRegex = """\d+""".r
   val times = intRegex.findAllMatchIn(race1Info.next()).map(_.group(0).toLong)

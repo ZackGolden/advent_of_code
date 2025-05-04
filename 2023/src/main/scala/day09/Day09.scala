@@ -1,4 +1,4 @@
-package main.scala.day9
+package main.scala.day09
 
 import scala.annotation.tailrec
 import scala.io.Source
@@ -45,7 +45,7 @@ def previousValue(row: List[Long]): Long = {
 }
 
 def solve: Unit = {
-    val filename = "data/day9-input"
+    val filename = "data/day09-input"
     val lines = Source.fromFile(filename).getLines().toList
 
     println("__Day 9__")

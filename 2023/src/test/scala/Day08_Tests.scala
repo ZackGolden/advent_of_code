@@ -1,4 +1,4 @@
-import main.scala.day8._
+import main.scala.day08._
 
 class Day8_Tests extends munit.FunSuite {
   test("First Full Part 1 solution") {
