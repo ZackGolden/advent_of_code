@@ -52,18 +52,50 @@ def part_1(lines):
 
   sum = 0
   for region in regions:
-    print(len(region[1]),find_perimeter(region))
     sum += len(region[1])*find_perimeter(region)
 
   return sum
 
-def find_sides(map):
-  sides = 0
-  for y in row
-  return 0
+def find_sides(region):
+  corners = 0
+  for x,y in region[1]:
+    dirs = [
+      (x,y-1),
+      (x+1,y-1),
+      (x+1,y),
+      (x+1,y+1),
+      (x,y+1),
+      (x-1,y+1),
+      (x-1,y),
+      (x-1,y-1)
+    ]
+    for i in range(8):
+      if i%2 == 0: 
+        # External Corners
+        if (dirs[i] not in region[1]) and (dirs[(i+2)%8] not in region[1]):
+            corners += 1
+        # Internal Corners
+        if (dirs[i] in region[1]) and (dirs[(i+2)%8] in region[1]) and (dirs[(i+1)%8] not in region[1]):
+            corners += 1
+  sides = corners
+  return sides
+    
 
 def part_2(lines):
   sum = 0
+  map = parse_it(lines)
+  regions = []
+  while len(map) > 0:
+    current = list(map.keys())[0]
+    regions.append((
+        map[current],
+        find_region(current[0],current[1],map)
+      ))
+
+  sum = 0
+  for region in regions:
+    sum += len(region[1])*find_sides(region)
+
   return sum
 
 def main():
