@@ -10,7 +10,7 @@ class Machine:
     j: int  # +y
     # Button B
     k: int  # +x
-    l: int  # +y
+    e: int  # +y
     # Targets
     x: int
     y: int
@@ -18,7 +18,7 @@ class Machine:
 
 def read_file(lines) -> List[Machine]:
     machines: List[Machine] = []
-    i, j, k, l, x, y = 0, 0, 0, 0, 0, 0
+    i, j, k, e, x, y = 0, 0, 0, 0, 0, 0
     for num, line in enumerate(lines):
         matches = re.findall(r"\d+", line)
         match num % 4:
@@ -27,11 +27,11 @@ def read_file(lines) -> List[Machine]:
                 j = int(matches[1])
             case 1:  # Button B
                 k = int(matches[0])
-                l = int(matches[1])
+                e = int(matches[1])
             case 2:  # Prize
                 x = int(matches[0])
                 y = int(matches[1])
-                machines.append(Machine(i, j, k, l, x, y))
+                machines.append(Machine(i, j, k, e, x, y))
             case 3:  # Skip
                 continue
     return machines

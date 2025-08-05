@@ -41,9 +41,9 @@ def part_2(lines):
         if i.isdigit():
             disk_map.append(int(i))
 
-    right = len(disk_map) // 2 if len(disk_map) % 2 == 0 else len(disk_map) // 2 + 1
+    len(disk_map) // 2 if len(disk_map) % 2 == 0 else len(disk_map) // 2 + 1
     block = 0
-    r_index = len(disk_map) - 2 if len(disk_map) % 2 == 0 else len(disk_map) - 1
+    len(disk_map) - 2 if len(disk_map) % 2 == 0 else len(disk_map) - 1
 
     free_space = []
     files = []

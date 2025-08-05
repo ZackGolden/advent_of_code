@@ -1,11 +1,24 @@
-def parse_lines(lines):
+from typing import List, Tuple
+
+
+def parse_lines(lines) -> Tuple[dict[Tuple[int, int], str], Tuple[Tuple[int, int],List[str]]]:
     # TODO: Instead of returning a 2d array, let's just store this whole thing in a map, and ignore the empty space
     split_point = 0
-    for i, line in enumerate(lines):
-        if line is "":
-            split_point = i
+    warehouse: dict[Tuple[int, int], str] = {}
+    robot = (0,0)
+
+    for y, line in enumerate(lines):
+        if line == "":
+            split_point = y
             break
-    return (lines[:split_point], lines[split_point:])
+        for x, tile in enumerate(lines):
+            if tile in {'#','O', '@'}:
+              warehouse[(x,y)] = tile
+              if tile is '@':
+                  robot = (x,y)
+
+    instructions: List[str] = lines[split_point:]
+    return (warehouse,(robot,instructions))
 
 
 def part_1(lines):

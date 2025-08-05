@@ -13,7 +13,10 @@ def test_parse_lines():
         "########",
         "",
         "<^^>>>vv<v>>v<<",
+        ""
     ]
+    actual = parse_lines(lines)
+    print(actual)
 
 
 def test_part1():

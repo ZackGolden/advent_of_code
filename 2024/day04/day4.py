@@ -79,7 +79,6 @@ def part_1(lines):
 
 
 def check_for_x_mas(lines, x, y):
-    count = 0
     nw = lines[y - 1][x - 1]
     ne = lines[y - 1][x + 1]
     sw = lines[y + 1][x - 1]

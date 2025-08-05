@@ -28,8 +28,8 @@ def part_2(lines):
             right[current[1]] = 1
 
     sum = 0
-    for l in left:
-        sum += l * right.get(l, 0)
+    for e in left:
+        sum += e * right.get(e, 0)
     return sum
 
 

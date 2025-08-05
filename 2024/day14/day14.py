@@ -1,5 +1,4 @@
 import re
-from math import inf
 from typing import Tuple
 
 
