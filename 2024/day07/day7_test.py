@@ -1,7 +1,7 @@
 from day7 import (
+    line_parse,
     part_1,
     part_2,
-    line_parse,
     ternary,
     valid_equation,
     valid_equation_with_concat,

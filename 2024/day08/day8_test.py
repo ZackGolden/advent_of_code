@@ -1,4 +1,4 @@
-from day8 import part_1, part_2, find_antennas, find_antinodes, find_resonate_antinodes
+from day8 import find_antennas, find_antinodes, find_resonate_antinodes, part_1, part_2
 
 
 def test_find_antennas():

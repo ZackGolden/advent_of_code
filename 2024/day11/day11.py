@@ -1,5 +1,5 @@
-import re
 import math
+import re
 
 
 def parse_it(lines):
