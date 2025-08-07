@@ -1,4 +1,4 @@
-from day10 import get_map, part_1, part_2, walk_path
+from day10.solve import get_map, part_1, part_2, walk_path
 
 
 def test_get_map():

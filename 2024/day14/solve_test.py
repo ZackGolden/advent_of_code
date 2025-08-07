@@ -1,4 +1,4 @@
-from day14 import move_robot, parse_lines, part_1
+from day14.solve import move_robot, parse_lines, part_1
 
 
 def test_parse1():

@@ -1,4 +1,4 @@
-from day7 import (
+from day07.solve import (
     line_parse,
     part_1,
     part_2,

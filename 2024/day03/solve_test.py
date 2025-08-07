@@ -1,4 +1,4 @@
-from day3 import part_1, part_2
+from day03.solve import part_1, part_2
 
 
 def test_part1():

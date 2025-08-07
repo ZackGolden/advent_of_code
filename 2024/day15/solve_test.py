@@ -1,4 +1,4 @@
-from day15 import parse_lines, part_1, part_2
+from day15.solve import parse_lines, part_1, part_2
 
 
 def test_parse_lines():

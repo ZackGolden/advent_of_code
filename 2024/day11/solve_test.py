@@ -1,4 +1,4 @@
-from day11 import parse_it, part_1
+from day11.solve import parse_it, part_1
 
 
 def test_parse():

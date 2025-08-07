@@ -1,4 +1,4 @@
-from day12 import find_region, parse_it, part_1, part_2
+from day12.solve import find_region, parse_it, part_1, part_2
 
 
 def test_parse_it():

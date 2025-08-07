@@ -1,4 +1,4 @@
-from day13 import Machine, part_1, part_2, read_file
+from day13.solve import Machine, part_1, part_2, read_file
 
 
 def test_read_file1():
