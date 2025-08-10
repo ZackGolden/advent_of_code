@@ -1,4 +1,12 @@
-from day15.solve import parse_lines, part_1, part_2, score
+from day15.solve import (
+    parse_lines,
+    parse_lines_already_expanded,
+    parse_lines_part2,
+    part_1,
+    part_2,
+    score,
+    score_part2,
+)
 
 
 def test_parse_lines():
@@ -150,8 +158,87 @@ def test_part1_2():
     assert 10092 == actual
 
 
+def test_parse_part2():
+    lines = [
+        "##########",
+        "#..O..O.O#",
+        "#......O.#",
+        "#.OO..O.O#",
+        "#..O@..O.#",
+        "#O#..O...#",
+        "#O..O..O.#",
+        "#.OO.O.OO#",
+        "#....O...#",
+        "##########",
+        "",
+    ]
+    (warehouse, (_, _)) = parse_lines_part2(lines)
+    expected = [
+        "####################",
+        "##....[]....[]..[]##",
+        "##............[]..##",
+        "##..[][]....[]..[]##",
+        "##....[]@.....[]..##",
+        "##[]##....[]......##",
+        "##[]....[]....[]..##",
+        "##..[][]..[]..[][]##",
+        "##........[]......##",
+        "####################",
+    ]
+    actual = list()
+    for y in range(10):
+        current = ""
+        for x in range(20):
+            current += warehouse.get((x, y), ".")
+        actual.append(current)
+
+    assert actual == expected
+
+
+def test_score_part2():
+    lines = [
+        "####################",
+        "##[].......[].[][]##",
+        "##[]...........[].##",
+        "##[]........[][][]##",
+        "##[]......[]....[]##",
+        "##..##......[]....##",
+        "##..[]............##",
+        "##..@......[].[][]##",
+        "##......[][]..[]..##",
+        "####################",
+        "",
+    ]
+    (warehouse, (_, _)) = parse_lines_already_expanded(lines)
+    actual = score_part2(warehouse)
+    assert 9021 == actual
+
+
 def test_part2():
-    lines = [""]
-    (warehouse, ((robot), moves)) = parse_lines(lines)
+    lines = [
+        "##########",
+        "#..O..O.O#",
+        "#......O.#",
+        "#.OO..O.O#",
+        "#..O@..O.#",
+        "#O#..O...#",
+        "#O..O..O.#",
+        "#.OO.O.OO#",
+        "#....O...#",
+        "##########",
+        "",
+        "<vv>^<v^>v>^vv^v>v<>v^v<v<^vv<<<^><<><>>v<vvv<>^v^>^<<<><<v<<<v^vv^v>^",
+        "vvv<<^>^v^^><<>>><>^<<><^vv^^<>vvv<>><^^v>^>vv<>v<<<<v<^v>^<^^>>>^<v<v",
+        "><>vv>v^v^<>><>>>><^^>vv>v<^^^>>v^v^<^^>v^^>v^<^v>v<>>v^v^<v>v^^<^^vv<",
+        "<<v<^>>^^^^>>>v^<>vvv^><v<<<>^^^vv^<vvv>^>v<^^^^v<>^>vvvv><>>v^<<^^^^^",
+        "^><^><>>><>^^<<^^v>>><^<v>^<vv>>v>>>^v><>^v><<<<v>>v<v<v>vvv>^<><<>^><",
+        "^>><>^v<><^vvv<^^<><v<<<<<><^v<<<><<<^^<v<^^^><^>>^<v^><<<^>>^v<v^v<v^",
+        ">^>>^v>vv>^<<^v<>><<><<v<<v><>v<^vv<<<>^^v^>^^>>><<^v>>v^v><^^>>^<>vv^",
+        "<><^^>^^^<><vvvvv^v<v<<>^v<v>v<<^><<><<><<<^^<<<^<<>><<><^^^>^^<>^>v<>",
+        "^^>vv<^v^v<vv>^<><v<^v>^^^>>>^^vvv^>vvv<>>>^<^>>>>>^<<^v>^vvv<>^<><<v>",
+        "v^^>>><<^^<>>^v^<v^vv<>v^<<>^<^v^v><^<<<><<^<v><v<>vv>>v><v^<vv<>v^<<^",
+        "",
+    ]
+    (warehouse, ((robot), moves)) = parse_lines_part2(lines)
     actual = part_2(warehouse, robot, moves)
-    assert 0 == actual
+    assert 9021 == actual
